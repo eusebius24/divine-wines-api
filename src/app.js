@@ -4,18 +4,23 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const divineWinesRouter = require('./divinewines/divinewines-router')
 
 const app = express()
 
-const morganOption = (NODE_ENV === 'production') ? 'tiny' : 'common';
+
+const morganOption = (NODE_ENV === 'production') ? 'tiny' : 'dev';
 
 app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
+app.options('*', cors())
 app.get('/', (req, res) => {
     res.send('Hello, world!')
 })
+
+app.use('/api/records', divineWinesRouter)
 
  app.use(function errorHandler(error, req, res, next) {
        let response
