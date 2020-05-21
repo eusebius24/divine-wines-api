@@ -20,10 +20,15 @@ divineWinesRouter
     .post(jsonParser, (req, res, next) => {
         const { name, vintner, varietal, region, year, tasting_notes, rating } = req.body
         const newRecord = { name, vintner, varietal, region, year, tasting_notes, rating }
-
+        console.log("newRecord: ", newRecord);
         if(!name) {
             return res.status(400).json({
                 error: { message: `Missing 'name' in request body` }
+            })
+        }
+        if(year && parseInt(year) < 0) {
+            return res.status(400).json({
+                error: { message: `Year must be greater than 0` }
             })
         }
         DivineWinesService.insertRecord(
