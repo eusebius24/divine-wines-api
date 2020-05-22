@@ -1,26 +1,28 @@
-# Express Boilerplate!
+# DivineWines API Documentation
 
-This is a boilerplate project used for starting new projects!
+**URL**: [https://safe-escarpment-69594.herokuapp.com/api/records/](https://safe-escarpment-69594.herokuapp.com/api/records/)
 
-##Set up
+* **Method**: `GET`, `POST`, `PATCH`, `DELETE`
+* **Data Params**: `{ name: “name”, vintner: “vintner”, varietal: “varietal”, year: “year”, region: “region”, tasting_notes: “notes”, rating: 1 }`
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME): 
+ **Success Response**: 
+`POST` Code: `201`
+		
+`GET` Code: `200`
+		ame: “name”, vintner: “vintner”, varietal: “varietal”, year: “year”, region: “region”, tasting_notes: “notes”, rating: 1  }`
+		
+`PATCH` Code: `204`
+		
+`DELETE` Code: `204`
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+* **Error Response**:
+		`POST` Code: `400`
+		**Content**: ``{ error: { message: `Missing 'name' in request body` } }``
+    `POST` Code: `400`
+		**Content**: ``{ error: { message: `Year must be greater than 0` } }``
 
-## Scripts
-
-Start the application `npm start`
-
-Start nodemon for the application `npm run dev`
-
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+**Sample Calls:**
+  `POST` `fetch('https://https://safe-escarpment-69594.herokuapp.com/api/records’,{method:'POST', headers: {content-type: 'application/json'}, body: JSON.stringify({name: “name”, varietal: “varietal”})})`
+	`GET`  `fetch('https://https://safe-escarpment-69594.herokuapp.com/api/records’)`
+	`PATCH` `fetch('https://https://safe-escarpment-69594.herokuapp.com/api/records/42’, { method: ‘PATCH’, headers: {content-type: ‘application/json’}, body: JSON.stringify({name: “name”})})`
+	`DELETE`  `fetch('https://https://safe-escarpment-69594.herokuapp.com/api/records/42’, {method: ‘DELETE’})`
