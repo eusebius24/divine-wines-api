@@ -26,6 +26,7 @@ divineWinesRouter
                 error: { message: `Missing 'name' in request body` }
             })
         }
+        console.log('year:', parseInt(year));
         if(year && parseInt(year) < 0) {
             return res.status(400).json({
                 error: { message: `Year must be greater than 0` }
