@@ -18,6 +18,7 @@ divineWinesRouter
     .catch(next)
 })
     .post(jsonParser, (req, res, next) => {
+        console.log('.postgethits')
         const { name, vintner, varietal, region, year, tasting_notes, rating } = req.body
         const newRecord = { name, vintner, varietal, region, year, tasting_notes, rating }
         console.log("newRecord: ", newRecord);
